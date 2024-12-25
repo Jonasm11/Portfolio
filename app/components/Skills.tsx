@@ -65,6 +65,7 @@ export default function Skills() {
           ))}
         </motion.div>
         <motion.div 
+        key={activeCategory}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
