@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
@@ -28,13 +28,22 @@ export default function Skills() {
     triggerOnce: true,
     threshold: 0.1,
   })
+  const [containerHeight, setContainerHeight] = useState(0)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const filteredSkills = skills.filter(
     skill => activeCategory === 'all' || skill.category === activeCategory
   )
 
+  useLayoutEffect(() => {
+    if (containerRef.current) {
+      const height = containerRef.current.offsetHeight
+      setContainerHeight(height)
+    }
+  }, [])
+
   return (
-    <section id="skills" ref={ref} className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="skills" ref={ref} className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4">
         <motion.h2 
           className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-200"
@@ -64,30 +73,34 @@ export default function Skills() {
             </button>
           ))}
         </motion.div>
-        <motion.div 
-        key={activeCategory}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          {filteredSkills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md flex items-center justify-center mb-3 transition-transform duration-300 hover:scale-110">
-                <span className="text-3xl font-bold text-blue-600 dark:text-blue-400">
-                  {skill.name.charAt(0)}
-                </span>
-              </div>
-              <span className="text-sm font-medium text-gray-800 dark:text-gray-200 text-center">{skill.name}</span>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div style={{ overflow: 'hidden' }}>
+          <motion.div 
+            ref={containerRef}
+            key={activeCategory}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8"
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            style={{ height: containerHeight > 0 ? containerHeight : 'auto', minHeight: '200px' }}
+          >
+            {filteredSkills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
+                className="flex flex-col items-center"
+              >
+                <div className="w-20 h-20 rounded-full bg-white dark:bg-gray-800 shadow-md flex items-center justify-center mb-3 transition-transform duration-300 hover:scale-110">
+                  <span className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                    {skill.name.charAt(0)}
+                  </span>
+                </div>
+                <span className="text-sm font-medium text-gray-800 dark:text-gray-200 text-center">{skill.name}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   )

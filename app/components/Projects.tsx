@@ -16,36 +16,20 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce solution with real-time inventory management and secure payment integration.",
+    title: "Portfolio",
+    description: "A full-stack responsive portfolio solution with animation and contact possibilities",
     image: "/1.png?height=300&width=400",
-    skills: ["React", "Node.js", "MongoDB", "Stripe"],
-    link: "Youtube.com"
-  },
-  {
-    id: 2,
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates and team chat functionality.",
-    image: "/placeholder.svg?height=300&width=400",
-    skills: ["Vue.js", "Express", "PostgreSQL", "Socket.io"],
-    link: "https://example.com/taskmanager"
-  },
-  {
-    id: 3,
-    title: "AI-powered Analytics Dashboard",
-    description: "An analytics dashboard leveraging machine learning for predictive insights and data visualization.",
-    image: "/placeholder.svg?height=300&width=400",
-    skills: ["React", "Python", "TensorFlow", "D3.js"],
-    link: "https://example.com/analytics"
-  },
-  // Add more projects as needed
+    skills: ["React", "Next.js", "FramerMotion", "TailwindCSS"],
+    link: "homepage"
+  }
+
 ]
 
 export default function Projects() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-200">
           Projects
