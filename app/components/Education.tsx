@@ -46,8 +46,8 @@ const Education: FC = () => {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
-    <section ref={ref} id="education" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4">
+    <section ref={ref} id="education" className="py-20 bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-gray-900">
+      <div className="container mx-auto px-4 relative">
         <motion.h2 
           className="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white"
           initial={{ opacity: 0, y: -50 }}
@@ -59,23 +59,27 @@ const Education: FC = () => {
         <div className="relative">
           {/* Vertical line */}
           <motion.div 
-            className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-400 to-purple-500"
+            className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-1 bg-gradient-to-b from-blue-400 to-purple-500"
             initial={{ height: 0 }}
-            animate={isInView ? { height: 'calc(100% + 4rem)' } : { height: 0 }}
+            animate={isInView ? { height: '100%' } : { height: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
           ></motion.div>
           
           {educationData.map((item, index) => (
             <motion.div 
               key={index} 
-              className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} items-center mb-8`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`flex flex-col md:flex-row items-center mb-16 ${
+                index % 2 === 0 ? 'md:flex-row-reverse' : ''
+              }`}
+              initial={{ opacity: 0, x: 0 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'} mb-8 md:mb-0`}>
+              <div className={`w-full md:w-5/12 ${
+                index % 2 === 0 ? 'md:text-right' : 'md:text-left'
+              } mb-8 md:mb-0 pl-12 md:pl-0`}>
                 <motion.div 
-                  className="bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
+                  className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -84,7 +88,7 @@ const Education: FC = () => {
                   <p className="text-gray-600 dark:text-gray-300 mt-3">{item.degree}</p>
                 </motion.div>
               </div>
-              <div className="w-2/12 flex justify-center my-4 md:my-0">
+              <div className="absolute left-0 md:static md:w-2/12 flex justify-center my-4 md:my-0">
                 <motion.div 
                   className="w-6 h-6 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full shadow-lg"
                   initial={{ scale: 0 }}
@@ -94,10 +98,8 @@ const Education: FC = () => {
                   whileTap={{ scale: 0.8 }}
                 ></motion.div>
               </div>
-              <div className="w-full md:w-5/12"></div>
             </motion.div>
           ))}
-          <div className="h-16"></div>
         </div>
       </div>
     </section>

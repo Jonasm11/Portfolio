@@ -73,8 +73,7 @@ export default function Projects() {
                 </div>
                 <a
                   href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  
                   className="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded transition-colors duration-300"
                 >
                   View Project

@@ -10,11 +10,17 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 
 export default function Home() {
+  useEffect(() => {
+    
+    document.title = 'Portfolio';
+  }, []);
+
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 1000)
   }, [])
+
 
   if (isLoading) {
     return (
