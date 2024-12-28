@@ -19,7 +19,7 @@ const quotes = [
     author: "Friends"
   },
   {
-    text: "a Day is just a Day we need to make the best out of it",
+    text: "a Day is just a Day we need to make the best out of it‚",
     author: "Myself"
   },
   {
