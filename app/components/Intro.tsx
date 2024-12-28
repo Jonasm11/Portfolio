@@ -49,7 +49,7 @@ export default function Intro() {
             <h2 className="text-2xl sm:text-3xl font-semibold mb-4 dark:text-white">
               a <span className="text-blue-600 dark:text-blue-400">{text}</span>
             </h2>
-            <p className="text-lg sm:text-xl mb-8 dark:text-gray-300 leading-relaxed">
+            <p className="text-lg sm:text-xl mb-8 text-gray-800 dark:text-white leading-relaxed">
               Welcome to my portfolio! I'm passionate about creating web applications
               and constantly learning new technologies. Here you'll find some of my projects 
               and skills as I journey through the world of development.
