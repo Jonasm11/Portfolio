@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { Github, Linkedin, Mail } from 'lucide-react'
 
 export default function Intro() {
   const [text, setText] = useState('Fullstack Web Developer')
@@ -49,11 +50,42 @@ export default function Intro() {
             <h2 className="text-2xl sm:text-3xl font-semibold mb-4 dark:text-white">
               a <span className="text-blue-600 dark:text-blue-400">{text}</span>
             </h2>
-            <p className="text-lg sm:text-xl mb-8 text-gray-800 dark:text-white leading-relaxed">
+            <p className="text-lg sm:text-xl mb-8 text-gray-800 dark:text-gray-200 leading-relaxed">
               Welcome to my portfolio! I'm passionate about creating web applications
               and constantly learning new technologies. Here you'll find some of my projects 
               and skills as I journey through the world of development.
             </p>
+            
+            <div className="flex space-x-4 mb-8">
+              <motion.a
+                href="https://github.com/Jonasm11"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-300"
+              >
+                <Github size={24} />
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/jonas-m%C3%A4rzh%C3%A4user-7a5a23294/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-300"
+              >
+                <Linkedin size={24} />
+              </motion.a>
+              <motion.a
+                href="mailto:j.marzhauser@gmail.com"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-300"
+              >
+                <Mail size={24} />
+              </motion.a>
+            </div>
             
             <motion.button 
               whileHover={{ scale: 1.05 }}

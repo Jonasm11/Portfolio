@@ -34,7 +34,7 @@ const quotes = [
 
 const skills = [
   { name: "Bar Work {Voluntary}", icon: Beer },
-  { name: "Driving Motercycle", icon: Car },
+  { name: "Driving Motorcycle", icon: Car },
   { name: "Festivals", icon: Music },
   { name: "Meeting up with Friends", icon: User },
 ]
